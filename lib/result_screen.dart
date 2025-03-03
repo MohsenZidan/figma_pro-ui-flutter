@@ -1,14 +1,19 @@
 import 'package:figma_pro/constants/constants.dart';
+import 'package:figma_pro/models/bmi_calculator.dart';
+import 'package:figma_pro/widgets/custom_bottom.dart';
+import 'package:figma_pro/home_screen.dart';
 import 'package:flutter/material.dart';
 
 class ResultScreen extends StatefulWidget {
-  const ResultScreen({super.key});
-
+  final double bmi ;
+  const ResultScreen({super.key, required this.bmi});
   @override
   State<ResultScreen> createState() => _ResultScreenState();
+  
 }
 
 class _ResultScreenState extends State<ResultScreen> {
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,35 +44,24 @@ class _ResultScreenState extends State<ResultScreen> {
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Text("normal",style: TextStyle(fontSize: 20 ,fontWeight: FontWeight.w600 , color: Colors.green)),
-                    Text("190",style: TextStyle(fontSize: 30 ,fontWeight: FontWeight.w600 , color: Colors.white)),
-                    Text("You have a normal Body Weight,\n             Good Job ",style: TextStyle(fontSize: 14 ,fontWeight: FontWeight.w600 , color: Colors.white)),
+                    Text(BmiCalculator.getBmiCatogory(bmi),style: TextStyle(fontSize: 20 ,fontWeight: FontWeight.w600 , color: Colors.green)),
+                    Text(bmi.roundToDouble().toString(),style: TextStyle(fontSize: 30 ,fontWeight: FontWeight.w600 , color: Colors.white)),
+                    Text(BmiCalculator.getBmiMessage(bmi),style: TextStyle(fontSize: 14 ,fontWeight: FontWeight.w600 , color: Colors.white)),
 
 
                   ],
                 ),
               ),
             ),
-            InkWell(
+              CustomButton(
               onTap: () {
+                Navigator.pushAndRemoveUntil(
+                    context,
+                    MaterialPageRoute(builder: (context) => BmiCalculator()),
+                    (route) => false);
               },
-              child: Container(
-                alignment: Alignment.center,
-                width: double.infinity,
-                height: 80,
-                decoration: BoxDecoration(
-                  color: AppConstants.sliderColor,
-                  borderRadius: BorderRadius.only(
-                    bottomLeft: Radius.circular(15),
-                    bottomRight: Radius.circular(15),
-                  ),
-                ),
-                child: Text(
-                  'Re Calculator',
-                  style: TextStyle(fontSize: 20, color: Colors.white),
-                ),
-              ),
-            ),
+              text: "Re-calculate",
+            )
           ],
         ),
       ),

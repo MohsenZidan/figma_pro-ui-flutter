@@ -1,18 +1,18 @@
 import 'package:figma_pro/constants/constants.dart';
 import 'package:flutter/material.dart';
 
-class SliderWidget extends StatelessWidget {
+class CustomControllerWidget extends StatelessWidget {
   final String title;
   final int value;
-  final VoidCallback onIncrement;
-  final VoidCallback onDecrement;
+  final VoidCallback increment;
+  final VoidCallback decrement;
 
-  const SliderWidget({
+  const CustomControllerWidget({
     super.key,
     required this.title,
     required this.value,
-    required this.onIncrement,
-    required this.onDecrement,
+    required this.increment,
+    required this.decrement,
   });
 
   @override
@@ -44,12 +44,12 @@ class SliderWidget extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 IconButton(
-                  onPressed: onDecrement,
+                  onPressed: decrement,
                   icon: Icon(Icons.remove, color: Colors.white),
                   color: Colors.grey,
                 ),
                 IconButton(
-                  onPressed: onIncrement,
+                  onPressed: increment,
                   icon: Icon(Icons.add, color: Colors.white),
                   color: Colors.grey,
                 ),
