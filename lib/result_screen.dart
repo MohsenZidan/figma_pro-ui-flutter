@@ -44,9 +44,9 @@ class _ResultScreenState extends State<ResultScreen> {
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Text(BmiCalculator.getBmiCatogory(bmi),style: TextStyle(fontSize: 20 ,fontWeight: FontWeight.w600 , color: Colors.green)),
-                    Text(bmi.roundToDouble().toString(),style: TextStyle(fontSize: 30 ,fontWeight: FontWeight.w600 , color: Colors.white)),
-                    Text(BmiCalculator.getBmiMessage(bmi),style: TextStyle(fontSize: 14 ,fontWeight: FontWeight.w600 , color: Colors.white)),
+                    Text(BmiCalculator.getBmiCatogory(widget.bmi),style: TextStyle(fontSize: 20 ,fontWeight: FontWeight.w600 , color: Colors.green)),
+                    Text(widget.bmi.roundToDouble().toString(),style: TextStyle(fontSize: 30 ,fontWeight: FontWeight.w600 , color: Colors.white)),
+                    Text(BmiCalculator.getBmiMessage(widget.bmi),style: TextStyle(fontSize: 14 ,fontWeight: FontWeight.w600 , color: Colors.white)),
 
 
                   ],
@@ -57,7 +57,7 @@ class _ResultScreenState extends State<ResultScreen> {
               onTap: () {
                 Navigator.pushAndRemoveUntil(
                     context,
-                    MaterialPageRoute(builder: (context) => BmiCalculator()),
+                    MaterialPageRoute(builder: (context) => HomeScreen()),
                     (route) => false);
               },
               text: "Re-calculate",
